@@ -20,7 +20,8 @@
     }
 
     /* ============================================
-       FULL PAGE BACKGROUND — pic.png
+       FULL PAGE BACKGROUND — pic.png (FULLY VISIBLE)
+       No overlay, no blur, no tint.
        ============================================ */
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -36,40 +37,26 @@
       align-items: flex-start;
       padding: 2rem 1.5rem;
       color: #1a2639;
-      position: relative;
     }
 
-    /* Very light page overlay so pic.png is fully visible */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.03);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* MAIN CV CARD */
+    /* Main CV card — ONLY the right side has slight background so text is readable.
+       The LEFT sidebar has NO background at all. */
     .cv-wrapper {
       max-width: 1150px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(20px) saturate(140%);
-      -webkit-backdrop-filter: blur(20px) saturate(140%);
       border-radius: 2rem;
-      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5), 0 8px 24px -8px rgba(0, 0, 0, 0.3),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      overflow: hidden;
+      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5), 0 8px 24px -8px rgba(0, 0, 0, 0.3);
       display: flex;
       flex-wrap: wrap;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.55);
       position: relative;
       z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.35);
     }
 
     /* ============================================
-       LEFT SIDEBAR — pic2.png FULLY TRANSPARENT
-       No dark tint. Only frosted glass blur.
+       LEFT SIDEBAR — pic2.png, TRULY TRANSPARENT
+       No overlay. No blur. No tint. Image shows raw.
        ============================================ */
     .cv-sidebar {
       flex: 1 1 320px;
@@ -77,49 +64,26 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: transparent;
+      background-color: #0b1a2e; /* fallback */
       color: #ffffff;
       padding: 2.5rem 1.8rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;
       position: relative;
-      isolation: isolate;
     }
 
-    /* NO dark overlay — only a light glass sheen + blur.
-       The pic2.png shows fully behind, with just a soft frosted glass look. */
-    .cv-sidebar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0.02) 100%
-      );
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: -1;
-    }
+    /* NOTHING OVER THE IMAGE. Text just has a shadow for readability. */
 
-    /* Subtle glass edge — no color tint */
-    .cv-sidebar::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 45%);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Strong text shadows for readability over the photo */
+    /* Strong text shadows for readability directly on the photo */
     .sidebar-name,
     .sidebar-role,
     .sidebar-section h4,
     .contact-item,
-    .contact-item a {
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.75);
+    .contact-item a,
+    .skill-badge,
+    .social-sidebar a i {
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 1), 0 0 14px rgba(0, 0, 0, 0.9);
     }
 
     .avatar-area {
@@ -133,18 +97,13 @@
       height: 140px;
       border-radius: 50%;
       margin: 0 auto 1.2rem;
-      border: 4px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.7), 0 0 0 6px rgba(255, 255, 255, 0.15);
+      border: 4px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.8);
       background-image: url('icon.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-color: #1f4a8a;
-      transition: transform 0.3s ease;
-    }
-
-    .avatar-circle:hover {
-      transform: scale(1.04);
     }
 
     .sidebar-name {
@@ -158,11 +117,11 @@
 
     .sidebar-role {
       font-size: 0.9rem;
-      color: #f0f6ff;
-      font-weight: 500;
+      color: #ffffff;
+      font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
       padding-bottom: 1rem;
       margin-bottom: 0.5rem;
     }
@@ -178,7 +137,7 @@
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
       padding-bottom: 0.5rem;
     }
 
@@ -190,7 +149,7 @@
       font-size: 0.92rem;
       margin-bottom: 0.9rem;
       color: #ffffff;
-      font-weight: 500;
+      font-weight: 600;
       word-break: break-word;
     }
 
@@ -199,22 +158,21 @@
       font-size: 1.1rem;
       color: #ffffff;
       text-align: center;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.9));
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,1));
     }
 
     .contact-item a {
       color: #ffffff;
       text-decoration: none;
-      border-bottom: 1px dotted rgba(255,255,255,0.6);
+      border-bottom: 1px dotted rgba(255,255,255,0.7);
       transition: all 0.2s;
     }
 
     .contact-item a:hover {
-      color: #ffffff;
       border-bottom-color: #ffffff;
     }
 
-    /* SOCIAL LINKS — glassy circles */
+    /* SOCIAL LINKS — visible circles, no opaque background */
     .social-sidebar {
       display: flex;
       flex-wrap: wrap;
@@ -228,43 +186,28 @@
       justify-content: center;
       width: 2.8rem;
       height: 2.8rem;
-      background: rgba(255, 255, 255, 0.20);
-      backdrop-filter: blur(10px) saturate(150%);
-      -webkit-backdrop-filter: blur(10px) saturate(150%);
+      background: rgba(0, 0, 0, 0.35); /* subtle dark circle so icons show on any photo */
       border-radius: 50%;
       color: #ffffff;
       font-size: 1.35rem;
       text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.35);
-      animation: subtleGlow 3s infinite;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      transition: all 0.25s ease;
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
     }
 
     .social-sidebar a:hover {
       background: #ffffff;
       color: #0b1a2e;
-      transform: translateY(-5px) scale(1.12);
+      transform: translateY(-4px) scale(1.1);
       border-color: white;
-      box-shadow: 0 14px 22px -8px rgba(100, 170, 255, 0.7);
-      animation: none;
       text-shadow: none;
     }
 
-    @keyframes subtleGlow {
-      0% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0.35), 0 4px 12px -4px rgba(0,0,0,0.6); }
-      70% { box-shadow: 0 0 0 10px rgba(120, 180, 255, 0), 0 4px 12px -4px rgba(0,0,0,0.6); }
-      100% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0), 0 4px 12px -4px rgba(0,0,0,0.6); }
-    }
-
-    /* Skills — glassy badges */
+    /* Skills — visible pills with light dark background */
     .skill-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.20);
-      backdrop-filter: blur(10px) saturate(150%);
-      -webkit-backdrop-filter: blur(10px) saturate(150%);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       padding: 0.45rem 1rem;
       border-radius: 2rem;
       font-size: 0.8rem;
@@ -272,22 +215,20 @@
       color: #ffffff;
       margin: 0.25rem 0.25rem 0.25rem 0;
       transition: all 0.2s;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 6px -2px rgba(0,0,0,0.4);
     }
 
     .skill-badge:hover {
-      background: rgba(255, 255, 255, 0.4);
-      border-color: #ffffff;
-      color: white;
+      background: #ffffff;
+      color: #0b1a2e;
+      text-shadow: none;
     }
 
-    /* RIGHT SIDE — glassy white */
+    /* ============================================
+       RIGHT SIDE — solid white so text is readable
+       ============================================ */
     .cv-main {
       flex: 2 1 600px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: #ffffff;
       padding: 2.5rem 2.5rem;
     }
 
@@ -369,9 +310,7 @@
     }
 
     .project-item {
-      background: rgba(249, 252, 255, 0.85);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: #f9fcff;
       border-radius: 1.2rem;
       padding: 1.4rem 1.6rem;
       margin-bottom: 1.2rem;
@@ -468,17 +407,10 @@
       body {
         padding: 1rem 0.8rem;
       }
-      .cv-wrapper {
-        border-radius: 1.5rem;
-      }
       .cv-sidebar {
         flex: 1 1 100%;
         padding: 2rem 1.5rem;
         border-radius: 1.5rem 1.5rem 0 0;
-      }
-      .cv-sidebar::before {
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
       }
       .cv-main {
         padding: 2rem 1.5rem;
