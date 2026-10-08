@@ -16,7 +16,7 @@
     }
 
     /* ============================================
-       FULL PAGE BACKGROUND — pic.png
+       FULL PAGE BACKGROUND — pic.png (VISIBLE)
        ============================================ */
     html, body {
       min-height: 100%;
@@ -24,12 +24,13 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      /* FULL PAGE BACKGROUND IMAGE — pic.png */
       background-image: url('pic.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-color: #0b1a2e;
+      background-color: #0b1a2e; /* fallback only */
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -39,42 +40,48 @@
       position: relative;
     }
 
-    /* Soft overlay so CV card stands out */
+    /* VERY LIGHT glassy overlay — image shows through clearly */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: linear-gradient(135deg, rgba(5, 15, 30, 0.55) 0%, rgba(10, 30, 55, 0.45) 100%);
+      background: rgba(8, 20, 40, 0.25); /* only 25% dark — you SEE pic.png */
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       z-index: 0;
       pointer-events: none;
     }
 
-    /* MAIN CV CARD */
+    /* MAIN CV CARD — frosted glass effect */
     .cv-wrapper {
       max-width: 1150px;
       width: 100%;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-radius: 2rem;
-      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.55), 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6), 0 8px 24px -8px rgba(0, 0, 0, 0.35),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
       display: flex;
       flex-wrap: wrap;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       position: relative;
       z-index: 1;
     }
 
     /* ============================================
-       LEFT SIDEBAR — pic2.png (contact area)
+       LEFT SIDEBAR — pic2.png (VISIBLE glassy)
        ============================================ */
     .cv-sidebar {
       flex: 1 1 320px;
+      /* SIDEBAR BACKGROUND IMAGE — pic2.png */
       background-image: url('pic2.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: #0b1a2e;
-      color: #e6edf7;
+      background-color: #0b1a2e; /* fallback */
+      color: #f2f7ff;
       padding: 2.5rem 1.8rem;
       display: flex;
       flex-direction: column;
@@ -82,18 +89,29 @@
       position: relative;
     }
 
-    /* Dark overlay for readability over pic2.png */
+    /* VERY LIGHT glassy overlay — pic2.png shows through */
     .cv-sidebar::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, rgba(5, 15, 30, 0.88) 0%, rgba(10, 30, 55, 0.82) 100%);
+      background: rgba(8, 22, 45, 0.45); /* only 45% dark — image visible */
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       z-index: 0;
     }
 
     .cv-sidebar > * {
       position: relative;
       z-index: 1;
+    }
+
+    /* Text shadow for readability on top of photo */
+    .sidebar-name,
+    .sidebar-role,
+    .sidebar-section h4,
+    .contact-item,
+    .contact-item a {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.4);
     }
 
     .avatar-area {
@@ -107,8 +125,8 @@
       height: 140px;
       border-radius: 50%;
       margin: 0 auto 1.2rem;
-      border: 4px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(255, 255, 255, 0.06);
+      border: 4px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(255, 255, 255, 0.12);
       background-image: url('icon.png');
       background-size: cover;
       background-position: center;
@@ -118,25 +136,25 @@
     }
 
     .avatar-circle:hover {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
     .sidebar-name {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       font-weight: 600;
-      color: white;
+      color: #ffffff;
       line-height: 1.2;
       margin-bottom: 0.25rem;
     }
 
     .sidebar-role {
       font-size: 0.9rem;
-      color: #a9c1e0;
+      color: #d7e5f7;
       font-weight: 400;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      border-bottom: 1px solid #2a4a6e;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
       padding-bottom: 1rem;
       margin-bottom: 0.5rem;
     }
@@ -150,9 +168,9 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       font-weight: 600;
-      color: #8bb0d4;
+      color: #b8d3f0;
       margin-bottom: 1rem;
-      border-bottom: 1px solid #2a4a6e;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
       padding-bottom: 0.5rem;
     }
 
@@ -163,19 +181,20 @@
       gap: 0.8rem;
       font-size: 0.9rem;
       margin-bottom: 0.9rem;
-      color: #d2e2f5;
+      color: #eaf2fb;
       word-break: break-word;
     }
 
     .contact-item i {
       width: 1.4rem;
       font-size: 1.1rem;
-      color: #7fa9d0;
+      color: #9dc2e8;
       text-align: center;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
     }
 
     .contact-item a {
-      color: #d2e2f5;
+      color: #eaf2fb;
       text-decoration: none;
       border-bottom: 1px dotted transparent;
       transition: all 0.2s;
@@ -183,7 +202,7 @@
 
     .contact-item a:hover {
       color: white;
-      border-bottom-color: #7fa9d0;
+      border-bottom-color: #9dc2e8;
     }
 
     /* BOLD & INFLUENCING SOCIAL LINKS */
@@ -200,14 +219,16 @@
       justify-content: center;
       width: 2.8rem;
       height: 2.8rem;
-      background: rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border-radius: 50%;
-      color: #e2eefb;
+      color: #ffffff;
       font-size: 1.35rem;
       text-decoration: none;
       transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1.5px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.4);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.5);
       animation: subtleGlow 3s infinite;
     }
 
@@ -216,40 +237,45 @@
       color: #0b1a2e;
       transform: translateY(-5px) scale(1.12);
       border-color: white;
-      box-shadow: 0 14px 22px -8px rgba(100, 170, 255, 0.55);
+      box-shadow: 0 14px 22px -8px rgba(100, 170, 255, 0.7);
       animation: none;
     }
 
     @keyframes subtleGlow {
-      0% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0.25); }
+      0% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0.35); }
       70% { box-shadow: 0 0 0 10px rgba(120, 180, 255, 0); }
       100% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0); }
     }
 
-    /* Skills */
+    /* Skills — glassy badges */
     .skill-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.10);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       padding: 0.4rem 1rem;
       border-radius: 2rem;
       font-size: 0.8rem;
       font-weight: 500;
-      color: #d2e2f5;
+      color: #ffffff;
       margin: 0.25rem 0.25rem 0.25rem 0;
       transition: all 0.2s;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     }
 
     .skill-badge:hover {
-      background: #2a5f8a;
-      border-color: #7fa9d0;
+      background: rgba(255, 255, 255, 0.35);
+      border-color: #ffffff;
       color: white;
     }
 
-    /* RIGHT SIDE */
+    /* RIGHT SIDE — glassy white */
     .cv-main {
       flex: 2 1 600px;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       padding: 2.5rem 2.5rem;
     }
 
