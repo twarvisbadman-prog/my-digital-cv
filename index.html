@@ -36,22 +36,21 @@
       box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
       display: flex;
       flex-wrap: wrap;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       position: relative;
       z-index: 1;
     }
 
     /* ============================================
-       SIDEBAR — pic2.png YENYE MWANGA MKUBWA
-       (22% tu giza — picha inaonekana wazi)
+       SIDEBAR — TRANSPARENT KABISA
+       pic2.png inaonekana wazi nyuma ya kila kitu
        ============================================ */
     .cv-sidebar {
       flex: 1 1 320px;
-      background-image: url('pic2.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-color: #0b1a2e;
+      /* HAKUNA background-image hapa — inaonekana kupitia body */
+      background: rgba(10, 15, 30, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       color: #ffffff;
       padding: 2.5rem 1.8rem;
       display: flex;
@@ -61,15 +60,9 @@
       isolation: isolate;
     }
 
-    /* Overlay NYEPESI SANA — pic2.png inaonekana wazi */
+    /* Ondoa overlay ya ziada — sidebar yenyewe ni transparent */
     .cv-sidebar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(10, 15, 30, 0.22);
-      backdrop-filter: blur(1.5px);
-      -webkit-backdrop-filter: blur(1.5px);
-      z-index: -1;
+      content: none;
     }
 
     /* Text-shadow kali kwenye maandishi yote ya sidebar */
@@ -83,6 +76,7 @@
 
     .avatar-area { text-align: center; }
 
+    /* AVATAR — TRANSPARENT KABISA */
     .avatar-circle {
       width: 140px;
       height: 140px;
@@ -90,9 +84,23 @@
       margin: 0 auto 1.2rem;
       border: 4px solid #ffffff;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      /* Ondoa background-image ili picha ya nyuma ionekane */
+      background: rgba(10, 15, 30, 0.3);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ikiwa unataka picha yako ionekane ndani ya avatar, weka icon.png hapa: */
+    .avatar-circle::after {
+      content: '';
+      position: absolute;
+      inset: 0;
       background-image: url('icon.png');
       background-size: cover;
       background-position: center;
+      opacity: 0.95;
     }
 
     .sidebar-name {
@@ -166,7 +174,7 @@
       justify-content: center;
       width: 2.8rem;
       height: 2.8rem;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-radius: 50%;
@@ -174,7 +182,7 @@
       font-size: 1.35rem;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
       box-shadow: 0 4px 12px -4px rgba(0,0,0,0.5);
     }
 
@@ -189,10 +197,10 @@
     /* SKILLS — glassy pills */
     .skill-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       padding: 0.45rem 1rem;
       border-radius: 2rem;
       font-size: 0.8rem;
@@ -210,11 +218,13 @@
     }
 
     /* ============================================
-       UPANDE WA KULIA — WHITE
+       RIGHT PANEL — TRANSPARENT TOO (pic.png shows)
        ============================================ */
     .cv-main {
       flex: 2 1 600px;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 2.5rem;
     }
 
@@ -229,7 +239,7 @@
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      border-bottom: 2px solid #e0eaf5;
+      border-bottom: 2px solid rgba(224, 234, 245, 0.8);
       padding-bottom: 0.6rem;
     }
 
@@ -241,7 +251,10 @@
 
     .edu-icon {
       width: 2.2rem; height: 2.2rem;
-      background: #e7f0fa; border-radius: 50%;
+      background: rgba(231, 240, 250, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: #1f4a8a; font-size: 1rem; flex-shrink: 0;
     }
@@ -257,10 +270,14 @@
 
     .edu-desc { font-size: 0.92rem; color: #3e5a7c; line-height: 1.5; }
 
+    /* PROJECT CARDS — glassy */
     .project-item {
-      background: #f9fcff; border-radius: 1.2rem;
+      background: rgba(249, 252, 255, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 1.2rem;
       padding: 1.4rem 1.6rem; margin-bottom: 1.2rem;
-      border: 1px solid #dbe8f5;
+      border: 1px solid rgba(219, 232, 245, 0.9);
     }
 
     .project-header {
@@ -281,7 +298,8 @@
     .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
     .project-tags span {
-      background: #e2edf9; color: #1b4b7a;
+      background: rgba(226, 237, 249, 0.9);
+      color: #1b4b7a;
       font-size: 0.72rem; font-weight: 600;
       padding: 0.25rem 0.9rem; border-radius: 2rem;
       border: 1px solid #c5d9ee;
