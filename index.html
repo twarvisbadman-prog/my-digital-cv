@@ -15,22 +15,21 @@
       box-sizing: border-box;
     }
 
-    /* ============================================
-       FULL PAGE BACKGROUND — pic.png (VISIBLE)
-       ============================================ */
     html, body {
       min-height: 100%;
     }
 
+    /* ============================================
+       FULL PAGE BACKGROUND — pic.png
+       ============================================ */
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      /* FULL PAGE BACKGROUND IMAGE — pic.png */
       background-image: url('pic.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-color: #0b1a2e; /* fallback only */
+      background-color: #0b1a2e;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -40,78 +39,87 @@
       position: relative;
     }
 
-    /* VERY LIGHT glassy overlay — image shows through clearly */
+    /* VERY LIGHT glassy overlay on full page — pic.png shows through clearly */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(8, 20, 40, 0.25); /* only 25% dark — you SEE pic.png */
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       z-index: 0;
       pointer-events: none;
     }
 
-    /* MAIN CV CARD — frosted glass effect */
+    /* MAIN CV CARD — glassy frosted */
     .cv-wrapper {
       max-width: 1150px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
       border-radius: 2rem;
-      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6), 0 8px 24px -8px rgba(0, 0, 0, 0.35),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5), 0 8px 24px -8px rgba(0, 0, 0, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.75);
       display: flex;
       flex-wrap: wrap;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       position: relative;
       z-index: 1;
     }
 
     /* ============================================
-       LEFT SIDEBAR — pic2.png (VISIBLE glassy)
+       LEFT SIDEBAR — pic2.png with LIGHT glass
        ============================================ */
     .cv-sidebar {
       flex: 1 1 320px;
-      /* SIDEBAR BACKGROUND IMAGE — pic2.png */
       background-image: url('pic2.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: #0b1a2e; /* fallback */
-      color: #f2f7ff;
+      background-color: #0b1a2e;
+      color: #ffffff;
       padding: 2.5rem 1.8rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;
       position: relative;
+      isolation: isolate;
     }
 
-    /* VERY LIGHT glassy overlay — pic2.png shows through */
+    /* LIGHT glassy tint — you SEE pic2.png through it */
     .cv-sidebar::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(8, 22, 45, 0.45); /* only 45% dark — image visible */
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      z-index: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.10) 0%,
+        rgba(20, 45, 80, 0.30) 100%
+      );
+      backdrop-filter: blur(6px) saturate(140%);
+      -webkit-backdrop-filter: blur(6px) saturate(140%);
+      z-index: -1;
     }
 
-    .cv-sidebar > * {
-      position: relative;
-      z-index: 1;
+    /* Soft top highlight for a true glass look */
+    .cv-sidebar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 40%);
+      z-index: -1;
+      pointer-events: none;
     }
 
-    /* Text shadow for readability on top of photo */
+    /* Strong text shadows keep text readable over photo */
     .sidebar-name,
     .sidebar-role,
     .sidebar-section h4,
     .contact-item,
     .contact-item a {
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85), 0 0 14px rgba(0, 0, 0, 0.6);
     }
 
     .avatar-area {
@@ -125,8 +133,8 @@
       height: 140px;
       border-radius: 50%;
       margin: 0 auto 1.2rem;
-      border: 4px solid rgba(255, 255, 255, 0.55);
-      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(255, 255, 255, 0.12);
+      border: 4px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.65), 0 0 0 6px rgba(255, 255, 255, 0.15);
       background-image: url('icon.png');
       background-size: cover;
       background-position: center;
@@ -150,11 +158,11 @@
 
     .sidebar-role {
       font-size: 0.9rem;
-      color: #d7e5f7;
-      font-weight: 400;
+      color: #f0f6ff;
+      font-weight: 500;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
       padding-bottom: 1rem;
       margin-bottom: 0.5rem;
     }
@@ -167,10 +175,10 @@
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      font-weight: 600;
-      color: #b8d3f0;
+      font-weight: 700;
+      color: #ffffff;
       margin-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
       padding-bottom: 0.5rem;
     }
 
@@ -179,33 +187,34 @@
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       margin-bottom: 0.9rem;
-      color: #eaf2fb;
+      color: #ffffff;
+      font-weight: 500;
       word-break: break-word;
     }
 
     .contact-item i {
-      width: 1.4rem;
+      width: 1.5rem;
       font-size: 1.1rem;
-      color: #9dc2e8;
+      color: #ffffff;
       text-align: center;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
     }
 
     .contact-item a {
-      color: #eaf2fb;
+      color: #ffffff;
       text-decoration: none;
-      border-bottom: 1px dotted transparent;
+      border-bottom: 1px dotted rgba(255,255,255,0.5);
       transition: all 0.2s;
     }
 
     .contact-item a:hover {
-      color: white;
-      border-bottom-color: #9dc2e8;
+      color: #ffffff;
+      border-bottom-color: #ffffff;
     }
 
-    /* BOLD & INFLUENCING SOCIAL LINKS */
+    /* BOLD SOCIAL LINKS — glassy circles */
     .social-sidebar {
       display: flex;
       flex-wrap: wrap;
@@ -220,16 +229,17 @@
       width: 2.8rem;
       height: 2.8rem;
       background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(10px) saturate(150%);
+      -webkit-backdrop-filter: blur(10px) saturate(150%);
       border-radius: 50%;
       color: #ffffff;
       font-size: 1.35rem;
       text-decoration: none;
       transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.5);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
       animation: subtleGlow 3s infinite;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
     }
 
     .social-sidebar a:hover {
@@ -239,29 +249,31 @@
       border-color: white;
       box-shadow: 0 14px 22px -8px rgba(100, 170, 255, 0.7);
       animation: none;
+      text-shadow: none;
     }
 
     @keyframes subtleGlow {
-      0% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0.35); }
-      70% { box-shadow: 0 0 0 10px rgba(120, 180, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0.35), 0 4px 12px -4px rgba(0,0,0,0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(120, 180, 255, 0), 0 4px 12px -4px rgba(0,0,0,0.5); }
+      100% { box-shadow: 0 0 0 0 rgba(120, 180, 255, 0), 0 4px 12px -4px rgba(0,0,0,0.5); }
     }
 
     /* Skills — glassy badges */
     .skill-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 0.4rem 1rem;
+      background: rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(10px) saturate(150%);
+      -webkit-backdrop-filter: blur(10px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.45rem 1rem;
       border-radius: 2rem;
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
       color: #ffffff;
       margin: 0.25rem 0.25rem 0.25rem 0;
       transition: all 0.2s;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 6px -2px rgba(0,0,0,0.3);
     }
 
     .skill-badge:hover {
@@ -273,9 +285,9 @@
     /* RIGHT SIDE — glassy white */
     .cv-main {
       flex: 2 1 600px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       padding: 2.5rem 2.5rem;
     }
 
@@ -307,7 +319,6 @@
       color: #2c3e50;
     }
 
-    /* Education */
     .edu-item {
       display: flex;
       gap: 1.2rem;
@@ -357,9 +368,10 @@
       line-height: 1.5;
     }
 
-    /* Projects */
     .project-item {
-      background: #f9fcff;
+      background: rgba(249, 252, 255, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border-radius: 1.2rem;
       padding: 1.4rem 1.6rem;
       margin-bottom: 1.2rem;
@@ -433,7 +445,6 @@
       border: 1px solid #c5d9ee;
     }
 
-    /* Experience */
     .exp-item {
       display: flex;
       gap: 1rem;
@@ -452,30 +463,50 @@
       color: #0b1a2e;
     }
 
-    /* Responsive */
+    /* ============================================
+       MOBILE FIX — sidebar now looks GLASSY on phone
+       ============================================ */
     @media (max-width: 850px) {
-      .cv-sidebar {
-        flex: 1 1 100%;
-        padding: 2rem 1.8rem;
-      }
-      .cv-main {
-        padding: 2rem 1.8rem;
-      }
-      .avatar-circle {
-        width: 120px;
-        height: 120px;
-      }
-    }
-
-    @media (max-width: 500px) {
       body {
         padding: 1rem 0.8rem;
       }
       .cv-wrapper {
         border-radius: 1.5rem;
       }
+      .cv-sidebar {
+        flex: 1 1 100%;
+        padding: 2rem 1.5rem;
+        border-radius: 1.5rem 1.5rem 0 0;
+        /* Lighter tint on mobile so pic2.png really shows */
+        min-height: auto;
+      }
+      .cv-sidebar::before {
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.08) 0%,
+          rgba(20, 45, 80, 0.25) 100%
+        );
+        backdrop-filter: blur(5px) saturate(140%);
+        -webkit-backdrop-filter: blur(5px) saturate(140%);
+      }
+      .cv-main {
+        padding: 2rem 1.5rem;
+        border-radius: 0 0 1.5rem 1.5rem;
+      }
+      .avatar-circle {
+        width: 120px;
+        height: 120px;
+      }
+      .social-sidebar a {
+        width: 2.9rem;
+        height: 2.9rem;
+        font-size: 1.35rem;
+      }
+    }
+
+    @media (max-width: 500px) {
       .cv-sidebar, .cv-main {
-        padding: 1.5rem 1.2rem;
+        padding: 1.6rem 1.2rem;
       }
       .main-section h3 {
         font-size: 1.4rem;
@@ -486,9 +517,12 @@
         gap: 0.4rem;
       }
       .social-sidebar a {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.2rem;
+        width: 2.7rem;
+        height: 2.7rem;
+        font-size: 1.25rem;
+      }
+      .sidebar-name {
+        font-size: 1.6rem;
       }
     }
   </style>
