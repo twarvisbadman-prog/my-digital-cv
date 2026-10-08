@@ -9,7 +9,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* BACKGROUND YA PAGE YOTE — pic.png */
+    /* PAGE YOTE — pic.png */
     body {
       font-family: 'Inter', sans-serif;
       background-image: url('pic.png');
@@ -24,7 +24,6 @@
       padding: 2rem 1.5rem;
     }
 
-    /* CARD YOTE */
     .cv-wrapper {
       max-width: 1150px;
       width: 100%;
@@ -36,9 +35,10 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* ============================================
-       SIDEBAR — pic2.png INAONEKANA 100% HAKUNA KITU JUU YAKE
-       ============================================ */
+    /* ==========================================
+       SIDEBAR — pic2.png INAONEKANA 100% WAZI
+       HAKUNA overlay, HAKUNA blur, HAKUNA tint
+       ========================================== */
     .cv-sidebar {
       flex: 1 1 320px;
       background-image: url('pic2.png');
@@ -53,9 +53,13 @@
       gap: 2rem;
     }
 
-    /* Maneno yote ya sidebar yana shadow nyeusi ili yasomeke juu ya picha */
-    .cv-sidebar * {
-      text-shadow: 0 2px 6px #000, 0 0 10px #000, 0 0 20px #000;
+    /* Text-shadow tu kwenye maandishi ili yasomeke */
+    .cv-sidebar .sidebar-name,
+    .cv-sidebar .sidebar-role,
+    .cv-sidebar .sidebar-section h4,
+    .cv-sidebar .contact-item,
+    .cv-sidebar .contact-item a {
+      text-shadow: 0 2px 6px #000, 0 0 12px #000;
     }
 
     .avatar-area { text-align: center; }
@@ -86,7 +90,7 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.6);
       padding-bottom: 1rem;
       margin-bottom: 0.5rem;
     }
@@ -100,7 +104,7 @@
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.6);
       padding-bottom: 0.5rem;
     }
 
@@ -120,15 +124,16 @@
       font-size: 1.1rem;
       color: #ffffff;
       text-align: center;
+      filter: drop-shadow(0 2px 4px #000);
     }
 
     .contact-item a {
       color: #ffffff;
       text-decoration: none;
-      border-bottom: 1px dotted rgba(255,255,255,0.7);
+      border-bottom: 1px dotted rgba(255,255,255,0.6);
     }
 
-    /* SOCIAL — duara nyeusi kidogo ili ionekane, hakuna blur */
+    /* SOCIAL — duara nyeusi kidogo, HAKUNA blur */
     .social-sidebar {
       display: flex;
       flex-wrap: wrap;
@@ -142,7 +147,7 @@
       justify-content: center;
       width: 2.8rem;
       height: 2.8rem;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 50%;
       color: #ffffff;
       font-size: 1.35rem;
@@ -160,7 +165,7 @@
     /* SKILLS — pills nyeusi kidogo */
     .skill-badge {
       display: inline-block;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.5);
       border: 1px solid #ffffff;
       padding: 0.45rem 1rem;
       border-radius: 2rem;
@@ -168,11 +173,12 @@
       font-weight: 600;
       color: #ffffff;
       margin: 0.25rem 0.25rem 0.25rem 0;
+      text-shadow: 0 1px 3px #000;
     }
 
-    /* ============================================
-       UPANDE WA KULIA — WHITE ILI MAANDISHI YASOMEKE
-       ============================================ */
+    /* ==========================================
+       UPANDE WA KULIA — WHITE
+       ========================================== */
     .cv-main {
       flex: 2 1 600px;
       background: #ffffff;
