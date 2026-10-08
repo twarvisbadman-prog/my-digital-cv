@@ -5,30 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Twarvis Davinc · Digital CV</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
-      min-height: 100%;
-    }
-
-    /* ============================================
-       FULL PAGE BACKGROUND — pic.png (FULLY VISIBLE)
-       No overlay, no blur, no tint.
-       ============================================ */
+    /* BACKGROUND YA PAGE YOTE — pic.png */
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-image: url('pic.png');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
       background-attachment: fixed;
       background-color: #0b1a2e;
       min-height: 100vh;
@@ -36,27 +22,22 @@
       justify-content: center;
       align-items: flex-start;
       padding: 2rem 1.5rem;
-      color: #1a2639;
     }
 
-    /* Main CV card — ONLY the right side has slight background so text is readable.
-       The LEFT sidebar has NO background at all. */
+    /* CARD YOTE */
     .cv-wrapper {
       max-width: 1150px;
       width: 100%;
       border-radius: 2rem;
       overflow: hidden;
-      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5), 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
       display: flex;
       flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     /* ============================================
-       LEFT SIDEBAR — pic2.png, TRULY TRANSPARENT
-       No overlay. No blur. No tint. Image shows raw.
+       SIDEBAR — pic2.png INAONEKANA 100% HAKUNA KITU JUU YAKE
        ============================================ */
     .cv-sidebar {
       flex: 1 1 320px;
@@ -64,46 +45,31 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: #0b1a2e; /* fallback */
+      background-color: #0b1a2e;
       color: #ffffff;
       padding: 2.5rem 1.8rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      position: relative;
     }
 
-    /* NOTHING OVER THE IMAGE. Text just has a shadow for readability. */
-
-    /* Strong text shadows for readability directly on the photo */
-    .sidebar-name,
-    .sidebar-role,
-    .sidebar-section h4,
-    .contact-item,
-    .contact-item a,
-    .skill-badge,
-    .social-sidebar a i {
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 1), 0 0 14px rgba(0, 0, 0, 0.9);
+    /* Maneno yote ya sidebar yana shadow nyeusi ili yasomeke juu ya picha */
+    .cv-sidebar * {
+      text-shadow: 0 2px 6px #000, 0 0 10px #000, 0 0 20px #000;
     }
 
-    .avatar-area {
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
+    .avatar-area { text-align: center; }
 
-    /* Avatar — icon.png */
     .avatar-circle {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       margin: 0 auto 1.2rem;
-      border: 4px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.8);
+      border: 4px solid #ffffff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
       background-image: url('icon.png');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      background-color: #1f4a8a;
     }
 
     .sidebar-name {
@@ -111,7 +77,6 @@
       font-size: 1.8rem;
       font-weight: 600;
       color: #ffffff;
-      line-height: 1.2;
       margin-bottom: 0.25rem;
     }
 
@@ -121,14 +86,12 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.7);
       padding-bottom: 1rem;
       margin-bottom: 0.5rem;
     }
 
-    .sidebar-section {
-      margin-top: 0.5rem;
-    }
+    .sidebar-section { margin-top: 0.5rem; }
 
     .sidebar-section h4 {
       font-size: 0.85rem;
@@ -137,11 +100,10 @@
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.7);
       padding-bottom: 0.5rem;
     }
 
-    /* Contact */
     .contact-item {
       display: flex;
       align-items: center;
@@ -158,21 +120,15 @@
       font-size: 1.1rem;
       color: #ffffff;
       text-align: center;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,1));
     }
 
     .contact-item a {
       color: #ffffff;
       text-decoration: none;
       border-bottom: 1px dotted rgba(255,255,255,0.7);
-      transition: all 0.2s;
     }
 
-    .contact-item a:hover {
-      border-bottom-color: #ffffff;
-    }
-
-    /* SOCIAL LINKS — visible circles, no opaque background */
+    /* SOCIAL — duara nyeusi kidogo ili ionekane, hakuna blur */
     .social-sidebar {
       display: flex;
       flex-wrap: wrap;
@@ -186,55 +142,44 @@
       justify-content: center;
       width: 2.8rem;
       height: 2.8rem;
-      background: rgba(0, 0, 0, 0.35); /* subtle dark circle so icons show on any photo */
+      background: rgba(0, 0, 0, 0.55);
       border-radius: 50%;
       color: #ffffff;
       font-size: 1.35rem;
       text-decoration: none;
-      transition: all 0.25s ease;
-      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      transition: 0.2s;
+      border: 1.5px solid #ffffff;
     }
 
     .social-sidebar a:hover {
       background: #ffffff;
       color: #0b1a2e;
-      transform: translateY(-4px) scale(1.1);
-      border-color: white;
-      text-shadow: none;
+      transform: scale(1.1);
     }
 
-    /* Skills — visible pills with light dark background */
+    /* SKILLS — pills nyeusi kidogo */
     .skill-badge {
       display: inline-block;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid #ffffff;
       padding: 0.45rem 1rem;
       border-radius: 2rem;
       font-size: 0.8rem;
       font-weight: 600;
       color: #ffffff;
       margin: 0.25rem 0.25rem 0.25rem 0;
-      transition: all 0.2s;
-    }
-
-    .skill-badge:hover {
-      background: #ffffff;
-      color: #0b1a2e;
-      text-shadow: none;
     }
 
     /* ============================================
-       RIGHT SIDE — solid white so text is readable
+       UPANDE WA KULIA — WHITE ILI MAANDISHI YASOMEKE
        ============================================ */
     .cv-main {
       flex: 2 1 600px;
       background: #ffffff;
-      padding: 2.5rem 2.5rem;
+      padding: 2.5rem;
     }
 
-    .main-section {
-      margin-bottom: 2.2rem;
-    }
+    .main-section { margin-bottom: 2.2rem; }
 
     .main-section h3 {
       font-family: 'Playfair Display', serif;
@@ -249,204 +194,75 @@
       padding-bottom: 0.6rem;
     }
 
-    .main-section h3 i {
-      color: #2a5f8a;
-      font-size: 1.4rem;
-    }
+    .main-section h3 i { color: #2a5f8a; font-size: 1.4rem; }
 
-    .profile-text {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #2c3e50;
-    }
+    .profile-text { font-size: 1rem; line-height: 1.7; color: #2c3e50; }
 
-    .edu-item {
-      display: flex;
-      gap: 1.2rem;
-      margin-bottom: 1.4rem;
-      position: relative;
-    }
+    .edu-item { display: flex; gap: 1.2rem; margin-bottom: 1.4rem; }
 
     .edu-icon {
-      width: 2.2rem;
-      height: 2.2rem;
-      background: #e7f0fa;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1f4a8a;
-      font-size: 1rem;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
+      width: 2.2rem; height: 2.2rem;
+      background: #e7f0fa; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #1f4a8a; font-size: 1rem; flex-shrink: 0;
     }
 
-    .edu-content h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #0b1a2e;
-      margin-bottom: 0.2rem;
-    }
+    .edu-content h4 { font-size: 1.1rem; font-weight: 600; color: #0b1a2e; margin-bottom: 0.2rem; }
 
     .edu-meta {
-      font-size: 0.85rem;
-      color: #5e7a9a;
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
+      font-size: 0.85rem; color: #5e7a9a; font-weight: 500;
+      margin-bottom: 0.3rem; display: flex; flex-wrap: wrap; gap: 0.8rem;
     }
 
-    .edu-meta i {
-      margin-right: 0.3rem;
-      color: #2a5f8a;
-    }
+    .edu-meta i { margin-right: 0.3rem; color: #2a5f8a; }
 
-    .edu-desc {
-      font-size: 0.92rem;
-      color: #3e5a7c;
-      line-height: 1.5;
-    }
+    .edu-desc { font-size: 0.92rem; color: #3e5a7c; line-height: 1.5; }
 
     .project-item {
-      background: #f9fcff;
-      border-radius: 1.2rem;
-      padding: 1.4rem 1.6rem;
-      margin-bottom: 1.2rem;
+      background: #f9fcff; border-radius: 1.2rem;
+      padding: 1.4rem 1.6rem; margin-bottom: 1.2rem;
       border: 1px solid #dbe8f5;
-      transition: all 0.2s;
-    }
-
-    .project-item:hover {
-      border-color: #b0cbe5;
-      box-shadow: 0 8px 20px -12px rgba(26, 60, 110, 0.2);
-      background: white;
     }
 
     .project-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.6rem;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      align-items: center; margin-bottom: 0.6rem;
     }
 
-    .project-header h4 {
-      font-size: 1.25rem;
-      font-weight: 650;
-      color: #0b1a2e;
-    }
-
-    .project-header h4 i {
-      color: #2a5f8a;
-      margin-right: 0.4rem;
-    }
+    .project-header h4 { font-size: 1.25rem; font-weight: 650; color: #0b1a2e; }
+    .project-header h4 i { color: #2a5f8a; margin-right: 0.4rem; }
 
     .project-link {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #1f4a8a;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      border-bottom: 1px solid transparent;
-      transition: all 0.2s;
+      font-size: 0.9rem; font-weight: 500; color: #1f4a8a;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;
     }
 
-    .project-link:hover {
-      gap: 0.6rem;
-      border-bottom-color: #1f4a8a;
-    }
+    .project-desc { font-size: 0.95rem; color: #2c3e50; line-height: 1.6; margin-bottom: 0.8rem; }
 
-    .project-desc {
-      font-size: 0.95rem;
-      color: #2c3e50;
-      line-height: 1.6;
-      margin-bottom: 0.8rem;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
     .project-tags span {
-      background: #e2edf9;
-      color: #1b4b7a;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.25rem 0.9rem;
-      border-radius: 2rem;
-      letter-spacing: 0.01em;
+      background: #e2edf9; color: #1b4b7a;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0.25rem 0.9rem; border-radius: 2rem;
       border: 1px solid #c5d9ee;
     }
 
-    .exp-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
+    .exp-item { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.95rem; }
+    .exp-item i { color: #2a5f8a; font-size: 1.1rem; margin-top: 0.2rem; width: 1.5rem; }
+    .exp-item strong { color: #0b1a2e; }
 
-    .exp-item i {
-      color: #2a5f8a;
-      font-size: 1.1rem;
-      margin-top: 0.2rem;
-      width: 1.5rem;
-    }
-
-    .exp-item strong {
-      color: #0b1a2e;
-    }
-
-    /* Responsive */
     @media (max-width: 850px) {
-      body {
-        padding: 1rem 0.8rem;
-      }
-      .cv-sidebar {
-        flex: 1 1 100%;
-        padding: 2rem 1.5rem;
-        border-radius: 1.5rem 1.5rem 0 0;
-      }
-      .cv-main {
-        padding: 2rem 1.5rem;
-        border-radius: 0 0 1.5rem 1.5rem;
-      }
-      .avatar-circle {
-        width: 120px;
-        height: 120px;
-      }
-      .social-sidebar a {
-        width: 2.9rem;
-        height: 2.9rem;
-        font-size: 1.35rem;
-      }
+      body { padding: 1rem 0.8rem; }
+      .cv-sidebar { flex: 1 1 100%; padding: 2rem 1.5rem; }
+      .cv-main { padding: 2rem 1.5rem; }
+      .avatar-circle { width: 120px; height: 120px; }
     }
 
     @media (max-width: 500px) {
-      .cv-sidebar, .cv-main {
-        padding: 1.6rem 1.2rem;
-      }
-      .main-section h3 {
-        font-size: 1.4rem;
-      }
-      .project-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-      }
-      .social-sidebar a {
-        width: 2.7rem;
-        height: 2.7rem;
-        font-size: 1.25rem;
-      }
-      .sidebar-name {
-        font-size: 1.6rem;
-      }
+      .cv-sidebar, .cv-main { padding: 1.6rem 1.2rem; }
+      .main-section h3 { font-size: 1.4rem; }
+      .sidebar-name { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -461,34 +277,22 @@
 
       <div class="sidebar-section">
         <h4><i class="fas fa-address-card" style="margin-right: 0.5rem;"></i> Contact</h4>
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:Twarvistech@gmail.com">Twarvistech@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-github"></i>
-          <a href="https://github.com/twarvisbadman-prog" target="_blank">twarvisbadman-prog</a>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Tanzania · East Africa</span>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-calendar-alt"></i>
-          <span>Born 15 May 2007</span>
-        </div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:Twarvistech@gmail.com">Twarvistech@gmail.com</a></div>
+        <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/twarvisbadman-prog" target="_blank">twarvisbadman-prog</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Tanzania · East Africa</span></div>
+        <div class="contact-item"><i class="fas fa-calendar-alt"></i><span>Born 15 May 2007</span></div>
       </div>
 
       <div class="sidebar-section">
         <h4><i class="fas fa-share-alt" style="margin-right: 0.5rem;"></i> Reach & Engage</h4>
         <div class="social-sidebar">
-          <a href="https://www.linkedin.com/in/twarvis-davinc-7a7066431" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com/twarvisbadman-prog" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/twarvice" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@twarvis" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-          <a href="https://www.threads.com/@twarvice" target="_blank" title="Threads"><i class="fab fa-threads"></i></a>
-          <a href="https://youtube.com/@twarvis" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://wa.me/255700000000" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/in/twarvis-davinc-7a7066431" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/twarvisbadman-prog" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/twarvice" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@twarvis" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.threads.com/@twarvice" target="_blank"><i class="fab fa-threads"></i></a>
+          <a href="https://youtube.com/@twarvis" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/255700000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
 
@@ -528,7 +332,7 @@
             <h4>Diploma in Communication System Technology</h4>
             <div class="edu-meta">
               <span><i class="fas fa-calendar"></i> 2025 – Present</span>
-              <span><i class="fas fa-map-pin"></i> DIT (Dar es Salaam Institute of Technology)</span>
+              <span><i class="fas fa-map-pin"></i> DIT</span>
             </div>
             <p class="edu-desc">Currently studying communication systems, networking, and modern tech infrastructure.</p>
           </div>
@@ -540,10 +344,9 @@
             <h4>Secondary Education (Advanced Level)</h4>
             <div class="edu-meta">
               <span><i class="fas fa-calendar"></i> 2021 – 2024</span>
-              <span><i class="fas fa-map-pin"></i> Mwanza Region, Magu District</span>
+              <span><i class="fas fa-map-pin"></i> Mwanza · Magu</span>
             </div>
-            <p class="edu-desc">Studied all science subjects (Physics, Chemistry, Biology, Mathematics). 
-              Performed excellently with <strong>Division 1.11</strong>.</p>
+            <p class="edu-desc">All science subjects. Division <strong>1.11</strong>.</p>
           </div>
         </div>
 
@@ -553,9 +356,8 @@
             <h4>Primary Education</h4>
             <div class="edu-meta">
               <span><i class="fas fa-calendar"></i> 2014 – 2020</span>
-              <span><i class="fas fa-map-pin"></i> St. Dorcas Vigama Primary School, Kisarawe</span>
+              <span><i class="fas fa-map-pin"></i> St. Dorcas Vigama, Kisarawe</span>
             </div>
-            <p class="edu-desc">Completed primary education with a strong foundation in science and mathematics.</p>
           </div>
         </div>
 
@@ -565,7 +367,7 @@
             <h4>Nursery School</h4>
             <div class="edu-meta">
               <span><i class="fas fa-calendar"></i> 2012 – 2013</span>
-              <span><i class="fas fa-map-pin"></i> St. Dorcas Vigama Nursery, Kisarawe</span>
+              <span><i class="fas fa-map-pin"></i> St. Dorcas Vigama, Kisarawe</span>
             </div>
           </div>
         </div>
@@ -576,19 +378,14 @@
 
         <div class="project-item">
           <div class="project-header">
-            <h4><i class="fas fa-star" style="color: #f5b342;"></i> Student Hubs</h4>
+            <h4><i class="fas fa-star" style="color:#f5b342;"></i> Student Hubs</h4>
             <a href="https://twarvis.cc.cd/" class="project-link" target="_blank">Visit site <i class="fas fa-arrow-right"></i></a>
           </div>
           <p class="project-desc">
-            A free digital platform where students share notes, find past papers, and access curated free courses. 
-            It also includes an <strong>auto quiz</strong> system to help learners test their knowledge. 
-            This is my major project because it directly helps students across Tanzania and beyond.
+            A free platform where students share notes, find past papers, access free courses, and take auto quizzes.
           </p>
           <div class="project-tags">
-            <span>Web Development</span>
-            <span>Education</span>
-            <span>Content Sharing</span>
-            <span>Auto Quiz</span>
+            <span>Web Development</span><span>Education</span><span>Auto Quiz</span>
           </div>
         </div>
 
@@ -596,17 +393,16 @@
           <i class="fas fa-briefcase"></i>
           <div>
             <strong>Industrial Practical Training – Cyber Club DIT</strong><br>
-            <span style="color: #5e7a9a; font-size: 0.9rem;">First field training · 2025</span><br>
-            <span style="color: #2c3e50;">Gained hands-on experience in networking, cybersecurity basics, and IT support within a live environment.</span>
+            <span style="color:#5e7a9a;font-size:0.9rem;">First field training · 2025</span><br>
+            <span style="color:#2c3e50;">Networking, cybersecurity basics, and IT support.</span>
           </div>
         </div>
       </section>
 
-      <section class="main-section" style="margin-bottom: 0;">
+      <section class="main-section" style="margin-bottom:0;">
         <h3><i class="fas fa-heart"></i> Passions</h3>
-        <p style="font-size: 0.98rem; color: #2c3e50; line-height: 1.7;">
-          Technology · AI Development · Content Creation · Digital Storytelling · Open Education · 
-          Building tools that empower African students.
+        <p style="font-size:0.98rem;color:#2c3e50;line-height:1.7;">
+          Technology · AI Development · Content Creation · Digital Storytelling · Open Education.
         </p>
       </section>
     </main>
